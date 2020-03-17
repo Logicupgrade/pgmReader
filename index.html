@@ -4,16 +4,8 @@
         <script src="functions.js"></script>
     </head>
     <body>
-        <input type ="file" id = "file_in">
-        
-        <ul>
-            <li>
-                <input type ="button" id = "button" onclick="myFunction()" value = "Load" onload ="statUpdate()">
-            </li>
-            <li>
-                <input type ="button" id = "button" onclick="statUpdate()" value = "Display">
-            </li>
-        </ul>
-        <canvas id="canvas" width="500" height="350" style="border:1px solid #000000;"></canvas>
+        <input type ="file" id = "file_in" onchange="myFunction()">
+
+        <canvas id="canvas" width="320" height="240" style="border:1px solid #000000;"></canvas>
     </body>
 </html>
