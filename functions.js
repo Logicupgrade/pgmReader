@@ -83,8 +83,8 @@ function statUpdate()
     
     image_width = parseInt(image_width);
     image_height = parseInt(image_height);
-    // console.log("image width: "+image_width);
-    // console.log("image height: "+image_height);
+    console.log("image width: "+image_width);
+    console.log("image height: "+image_height);
 
     var fileArray = new Uint8Array(tempArray);
 
@@ -129,19 +129,38 @@ function statUpdate()
     console.log("bigString Length: "+bigString.length);
 
     var imgData = [];
+    
+    var idCheck = document.getElementById("canvas");
 
-    var canvas = document.getElementById('canvas');
+    if(idCheck)
+    {
+        idCheck.remove();
+    }
 
-    canvas.style.width=image_width+"px";
-    canvas.style.height=image_height+"px";
+    console.log("idcheck:"+idCheck);
 
-     var ctx = canvas.getContext('2d');
+    //creates canvas element
+    var theCanvas = document.createElement("canvas");
+    
+    document.body.appendChild(theCanvas);
+
+    //canvas attributes
+    theCanvas.setAttribute("id","canvas");
+    theCanvas.setAttribute("width",image_width);
+    theCanvas.setAttribute("height",image_height);
+    theCanvas.setAttribute("style","border:1px solid black");
+
+    //draw to canvas
+    var canvas = document.getElementById('canvas');    
+
+    var ctx = canvas.getContext('2d');
 
     var formattedArray = new Uint8ClampedArray(bigString);
 
     var myImageData = new ImageData(formattedArray,image_width,image_height);
     
-    ctx.putImageData(myImageData, 0, 0);
+    ctx.putImageData(myImageData,0,0);
+
 }
 
 //think theres an issue here with charCodeAt too high of values
